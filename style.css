@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: dimgray;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+p{
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;        
+    padding: 20px 5%;          
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;               
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* ほんのり影をつけて境目を出す */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f09199; 
+}
+.main-visual {
+    height: 60vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdfaf5; 
+    text-align: center;
+}
+
+.mv-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.mv-text p {
+    font-size: 1.1rem;
+    color: #666;
+}
+#about {
+    padding: 100px 5%;
+    max-width: 800px; 
+    margin: 0 auto;   
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+/* 見出しの下に短い線を引く */
+#about h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #f09199;
+    margin: 10px auto 0;
+}
+.about-container h4{
+    padding: 40px;
+}
+.about-container p {
+    text-align: left; 
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+#works {
+    padding: 80px 0;
+    background-color: #fafafa;
+    overflow: hidden; /* はみ出た画像を隠すため */
+}
+
+#works h2 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+#works h3{
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 0.5em 0;
+    border-bottom: 3px dotted #666; 
+    color: #666;
+}
+
+#works p{
+    padding-left: 10px;
+    
+}
+#works img{
+    padding-bottom: 20px;
+}
+/* スライダーの外枠 */
+.banners-slider {
+    width: 100%;
+}
+
+/* 画像を横に並べる箱 */
+.slider-inner {
+    display: flex;
+    /* アニメーション：loopという名前の動きを30秒で無限に繰り返す */
+    animation: loop-slide 30s linear infinite;
+    width: max-content; /* 中身の幅に合わせる */
+}
+
+/* 各画像（aタグ）の設定 */
+.slider-item {
+    width: 400px; /* 画面で見せるサイズ（2:1の比率を維持） */
+    margin: 0 10px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease; /* 拡大を滑らかに */
+}
+
+.slider-item img {
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ホバー時の動き（拡大 ＆ 停止） */
+.slider-inner:hover {
+    animation-play-state: paused; /* マウスを乗せると流れるのが止まる */
+}
+
+.slider-item:hover {
+    transform: scale(1.05); /* 少し大きくする */
+}
+
+/* 左へスルスル動かす設定 */
+@keyframes loop-slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* 半分（2セット分用意したので）まで行ったらループ */
+}
+.banner-details {
+    padding: 80px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 各詳細ボックスのレイアウト（画像と説明を横並びに） 
+.detail-box {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 150px; /* 作品同士をかなり離す（100px → 150px） */
+    padding-top: 100px;   /* スクロールで飛んできた時の上の余白を増やす */
+
+}
+*/
+
+/* スマホで見るときは縦並びにする */
+@media (max-width: 768px) {
+    .detail-box {
+        flex-direction: column;
+    }
+}
+
+.detail-image {
+    flex: 1; /* 画像エリアの比率 */
+}
+
+.detail-image img {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.detail-text {
+    flex: 1; /* テキストエリアの比率 */
+}
+
+.detail-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.detail-text p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.detail-text strong {
+    color: #f09199; 
+}
+
+.website {
+    padding: 80px 5%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.web-item {
+    margin-top: 40px;
+    padding: 40px;
+    border: 1px dashed #ccc;
+    border-radius: 20px;
+    display: inline-block;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.web-item:hover {
+    background-color: #fdfaf5;
+    transform: translateY(-5px);
+}
+
+#contact {
+    padding: 100px 5%;
+    background-color: #fdfaf5; 
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#contact > p {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #666;
+}
+
+/* フォームの最大幅を制限して中央に寄せる */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+/* 各入力項目の間隔 */
+.form-item {
+    margin-bottom: 25px;
+}
+
+/* ラベルの設定 */
+.form-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-item label span {
+    color: #f09199; 
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* 入力欄とセレクトボックス、テキストエリア */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* 入力中に枠線の色を変える */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #f09199;
+}
+
+/* 送信ボタン */
+.form-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form-btn button {
+    background-color: #f09199;
+    color: #fff;
+    border: none;
+    padding: 15px 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(240, 145, 153, 0.3);
+}
+
+.form-btn button:hover {
+    background-color: #e07b85;
+    transform: translateY(-3px);
+}
+.contact-sns {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.contact-sns p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.twitter-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.twitter-link:hover {
+    opacity: 0.7;
+}
+
+/* Twitterの文字の前に小さなアイコン（または・）を置く例 */
+.twitter-link::before {
+    content: "𝕏"; /* またはアイコンフォントなど */
+    font-size: 1.2rem;
+}
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 0.05em;
+}
