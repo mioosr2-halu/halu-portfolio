@@ -198,9 +198,9 @@ nav ul li a:hover {
 
 /* スマホで見るときは縦並びにする */
 @media (max-width: 768px) {
-    .detail-box {
+    /*.detail-box {
         flex-direction: column;
-    }
+    }:*/
 }
 
 .detail-image {
